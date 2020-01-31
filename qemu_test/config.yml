@@ -1,0 +1,31 @@
+# Example configuration
+tracelog:
+        # The entry to wait for before logging
+        startsignal:
+                # MEM32: m, IO: i, MSR: s, CPUID: c, PCI: p
+                type: "i"
+                offset: 0x80
+                value: 0xddaa
+                direction: "O"
+                datawidth: 16
+        # The entry to wait for to end logging
+        stopsignal:
+                type: "i"
+                offset: 0x80
+                value: 0xaadd
+                direction: "O"
+                datawidth: 16
+        serial:
+                type: "fifo"
+                port: "/tmp/guest"
+                baudrate: 115200
+        dutcontrol:
+                startcmd: "qemu_test/start.sh"
+                stopcmd: "qemu_test/stop.sh"
+                restartcmd: "qemu_test/restart.sh"
+
+database:
+        hostname: localhost
+        port: 3306
+        username: root
+        password: FUCKthisMYSQLshit123!!!!

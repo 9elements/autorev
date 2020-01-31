@@ -1,0 +1,150 @@
+# Example configuration for Supermicro X11SSH
+tracelog:
+        # The entry to wait for before logging
+        serial:
+                type: "tty"
+                port: "/dev/ttyUSB0"
+                baudrate: 115200
+                timeout: 60
+                hotplugtimeout: 180
+        dutcontrol:
+                startcmd: "x11ssh_test/start.sh"
+                stopcmd: "x11ssh_test/stop.sh"
+                restartcmd: "x11ssh_test/restart.sh"
+                initcmd: "x11ssh_test/init.sh"
+        startsignal:
+                # MEM32: m, IO: i, MSR: s, CPUID: c, PCI: p
+                type: "i"
+                offset: 0x80
+                value: 0x9800
+                direction: "O"
+                datawidth: 32
+        # The entry to wait for to end logging
+        stopsignal:
+                type: "i"
+                offset: 0x80
+                value: 0x9b02
+                direction: "O"
+                datawidth: 32
+        options_default_table: "KabyLake"
+        variable_options:
+                -
+                        name: "SataSalpSupport"
+                        byteoffset: 0x41
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[0]"
+                        byteoffset: 0x42
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[1]"
+                        byteoffset: 0x43
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[2]"
+                        byteoffset: 0x44
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[3]"
+                        byteoffset: 0x45
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[4]"
+                        byteoffset: 0x46
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[5]"
+                        byteoffset: 0x47
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[6]"
+                        byteoffset: 0x48
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsEnable[7]"
+                        byteoffset: 0x49
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[0]"
+                        byteoffset: 0x4a
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[1]"
+                        byteoffset: 0x4b
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[2]"
+                        byteoffset: 0x4c
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[3]"
+                        byteoffset: 0x4d
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[4]"
+                        byteoffset: 0x4e
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[5]"
+                        byteoffset: 0x4f
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[6]"
+                        byteoffset: 0x50
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataPortsDevSlp[7]"
+                        byteoffset: 0x51
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataEnable"
+                        byteoffset: 0x91
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+                -
+                        name: "SataMode"
+                        byteoffset: 0x92
+                        bitwidth: 8
+                        min: 0
+                        max: 1
+
+database:
+        hostname: localhost
+        port: 3306
+        username: root
+        password: FUCKthisMYSQLshit123!!!!

@@ -1,0 +1,60 @@
+# Example configuration
+tracelog:
+        # The entry to wait for before logging
+        startsignal:
+                # MEM32: m, IO: i, MSR: s, CPUID: c, PCI: p
+                type: "i"
+                offset: 0x80
+                value: 0xddaa
+                direction: "O"
+                datawidth: 16
+        # The entry to wait for to end logging
+        stopsignal:
+                type: "i"
+                offset: 0x80
+                value: 0xaadd
+                direction: "O"
+                datawidth: 16
+        serial:
+                type: "fifo"
+                port: "/tmp/guest"
+                baudrate: 115200
+                timeout: 60
+                hotplugtimeout: 180
+        dutcontrol:
+                startcmd: "qemu_test/start.sh"
+                stopcmd: "qemu_test/stop.sh"
+                restartcmd: "qemu_test/restart.sh"
+                initcmd: "qemu_test/init.sh"
+        options_default_table: "qemu"
+        variable_options:
+                -
+                        name: "BiosOption1"
+                        byteoffset: 0
+                        bitwidth: 32
+                        min: 0
+                        max: 1
+                -
+                        name: "BiosOption2"
+                        byteoffset: 4
+                        bitwidth: 32
+                        min: 0
+                        max: 1
+                -
+                        name: "BiosOption3"
+                        byteoffset: 8
+                        bitwidth: 32
+                        min: 0
+                        max: 1
+                -
+                        name: "BiosOption4"
+                        byteoffset: 12
+                        bitwidth: 32
+                        min: 0
+                        max: 1
+
+database:
+        hostname: localhost
+        port: 3306
+        username: root
+        password:
